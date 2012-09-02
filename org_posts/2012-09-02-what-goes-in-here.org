@@ -1,0 +1,18 @@
+#+BEGIN_HTML
+---
+layout: post
+title: "What goes in here"
+date: 2012-09-02 12:46
+comments: true
+categories:
+---
+
+This blog will contain my thoughts or whatever comes to my mind. They
+will not be written in an ordered manner but instead whenever they'll
+arrive in my mind. There are various things that come to my mind, as a
+result of observation or analysis. Not recorded they are **lost
+forever**. But still this blog isn't written to reach the conclusion
+of recording thoughts. Instead it has no conclusion at all.
+
+
+#+END_HTML

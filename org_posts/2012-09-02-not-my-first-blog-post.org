@@ -1,0 +1,14 @@
+#+BEGIN_HTML
+---
+layout: post
+title: "Not my first blog post"
+date: 2012-09-02 02:17
+comments: true
+categories:
+---
+
+I am blogging via **Octopress** using **Github Pages**.  Writing my posts using
+**Emacs** (to be specific **org-mode** and not **markdown**), and writing
+math-equations using **Mathjax** ($$\sum$$). Isn't this super fishy!
+
+#+END_HTML

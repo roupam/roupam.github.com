@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[]]></title>
+  <link href="http://roupam.github.com/atom.xml" rel="self"/>
+  <link href="http://roupam.github.com/"/>
+  <updated>2012-09-02T13:24:51+05:30</updated>
+  <id>http://roupam.github.com/</id>
+  <author>
+    <name><![CDATA[Roupam Ghosh]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Tribalism]]></title>
+    <link href="http://roupam.github.com/blog/2012/09/02/tribalism/"/>
+    <updated>2012-09-02T12:54:00+05:30</updated>
+    <id>http://roupam.github.com/blog/2012/09/02/tribalism</id>
+    <content type="html"><![CDATA[<p>Tribalism is something I would like to discuss about. Tribalism is the
+extension of our ancient tribal lives into our modern world. Infact
+most edifices of this world is based on our tribal socieities
+thousands of years ago. Globalization is only improving commerce, but
+our tribal feelings still remain. Tribalism can be manifested in the
+desire of dividing people into groups or tribes. Those that base their
+divisions on classification based on history, ancient human tribes,
+civilization, etc. is tribalism. Country, patriotism, racism,
+religion, fanaticism, are all examples of tribalism.</p>
+
+<p><strong>Country</strong> Modern extension of ancient kindgoms, which in turn
+extends from tribes.</p>
+
+<p><strong>Race</strong> Another term for tribe but in the wider sense. In a sense it
+unites some tribes with common properties and moulds them into groups.</p>
+
+<p><strong>Fanaticism</strong> derives from religion which in turn derives from tribal
+rituals and which ultimately derives from tribes.</p>
+
+<p>The force of tribalism is the most powerful of all human group
+forces. This force still haunts mankind, and doesn&#8217;t seem to go away
+very soon. With tribalism still dominating as one of the major forces
+in this world, it would be wise to analyze, the force that affects
+tribal dynamics. Group theory, that observes the dynamics of people in
+various groups, can be applied to tribalism also. Hence, it can be
+said that one tribe can show the same manisfestations as that of a
+group. So, one tribe always wants the disadvantage of other tribes,
+and advantage of oneself.</p>
+
+<p>There are other laws also which I think control tribal dynamics.
+Tribes like to establish superiority over other tribes. Tribes like to
+take credit for ancient civilizations and for all the glory to mankind
+they&#8217;ve brought, but discredit other tribes and their achievements. A
+tribe can be united by using various definitions like nation,
+religion, race, creed, etc. But mostly tribal feelings are glorified
+by achievements that a particular tribe has already achieved.</p>
+
+<p>History is written by the tribes which has the most power during the
+time in which history was written. Sadly, tribal forces still affect
+our society so that powerful tribes enjoy and weaker tribes
+suffer. People are still not treated equally. Actually tribal feelings
+imply inequality.</p>
+
+<p>Therefore, we finally arrive at the ultimate thing that shapes our
+world <strong>POWER</strong>. The powerful tribe will live prosperously, glorify
+their history, glorify their pride and unquestionably write a new
+chapter in history. This is the condition of our world.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What goes in here]]></title>
+    <link href="http://roupam.github.com/blog/2012/09/02/what-goes-in-here/"/>
+    <updated>2012-09-02T12:46:00+05:30</updated>
+    <id>http://roupam.github.com/blog/2012/09/02/what-goes-in-here</id>
+    <content type="html"><![CDATA[<p>This blog will contain my thoughts or whatever comes to my mind. They
+will not be written in an ordered manner but instead whenever they&#8217;ll
+arrive in my mind. There are various things that come to my mind, as a
+result of observation or analysis. Not recorded they are <strong>lost
+forever</strong>. But still this blog isn&#8217;t written to reach the conclusion
+of recording thoughts. Instead it has no conclusion at all.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Not my first blog post]]></title>
+    <link href="http://roupam.github.com/blog/2012/09/02/not-my-first-blog-post/"/>
+    <updated>2012-09-02T02:17:00+05:30</updated>
+    <id>http://roupam.github.com/blog/2012/09/02/not-my-first-blog-post</id>
+    <content type="html"><![CDATA[<p>I am blogging via <strong>Octopress</strong> using <strong>Github Pages</strong>.  Writing my posts using
+<strong>Emacs</strong> (to be specific <strong>org-mode</strong> and not <strong>markdown</strong>), and writing
+math-equations using <strong>Mathjax</strong> ($$\sum$$). Isn&#8217;t this super fishy!</p>
+]]></content>
+  </entry>
+  
+</feed>
