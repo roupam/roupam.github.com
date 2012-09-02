@@ -4,7 +4,7 @@
   <title><![CDATA[]]></title>
   <link href="http://roupam.github.com/atom.xml" rel="self"/>
   <link href="http://roupam.github.com/"/>
-  <updated>2012-09-02T13:26:35+05:30</updated>
+  <updated>2012-09-02T13:27:44+05:30</updated>
   <id>http://roupam.github.com/</id>
   <author>
     <name><![CDATA[Roupam Ghosh]]></name>
@@ -89,7 +89,7 @@ of recording thoughts. Instead it has no conclusion at all.</p>
     <id>http://roupam.github.com/blog/2012/09/02/not-my-first-blog-post</id>
     <content type="html"><![CDATA[<p>I am blogging via <strong>Octopress</strong> using <strong>Github Pages</strong>.  Writing my posts using
 <strong>Emacs</strong> (to be specific <strong>org-mode</strong> and not <strong>markdown</strong>), and writing
-math-equations using <strong>Mathjax</strong> ($e<sup>{\pi</sup> i} + 1 = 0$). Isn&#8217;t this super fishy!</p>
+math-equations using <strong>Mathjax</strong> ($\zeta(s) = \sum \frac{1}{n<sup>s}$).</sup> Isn&#8217;t this super fishy!</p>
 ]]></content>
   </entry>
   
