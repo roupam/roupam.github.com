@@ -10,7 +10,7 @@
 
   
   <meta name="description" content="This blog will contain my thoughts or whatever comes to my mind. They
-will not be written in an ordered manner but instead whenever they&#8217;ll &hellip;">
+will not be written in an ordered manner but instead whenever they&rsquo;ll &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -33,9 +33,6 @@ will not be written in an ordered manner but instead whenever they&#8217;ll &hel
 
   
 
-<script type="text/javascript"
-  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 </head>
 
 <body   class="no-sidebar"  >
@@ -93,10 +90,10 @@ will not be written in an ordered manner but instead whenever they&#8217;ll &hel
 
 
 <div class="entry-content"><p>This blog will contain my thoughts or whatever comes to my mind. They
-will not be written in an ordered manner but instead whenever they&#8217;ll
+will not be written in an ordered manner but instead whenever they&rsquo;ll
 arrive in my mind. There are various things that come to my mind, as a
 result of observation or analysis. Not recorded they are <strong>lost
-forever</strong>. But still this blog isn&#8217;t written to reach the conclusion
+forever</strong>. But still this blog isn&rsquo;t written to reach the conclusion
 of recording thoughts. Instead it has no conclusion at all.</p>
 </div>
 
@@ -177,6 +174,24 @@ of recording thoughts. Instead it has no conclusion at all.</p>
 
 
 
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 
 </body>

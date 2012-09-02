@@ -4,7 +4,7 @@
   <title><![CDATA[]]></title>
   <link href="http://roupam.github.com/feed" rel="self"/>
   <link href="http://roupam.github.com/"/>
-  <updated>2012-09-02T13:28:47+05:30</updated>
+  <updated>2012-09-02T13:36:46+05:30</updated>
   <id>http://roupam.github.com/</id>
   <author>
     <name><![CDATA[Roupam Ghosh]]></name>
@@ -38,7 +38,7 @@ unites some tribes with common properties and moulds them into groups.</p>
 rituals and which ultimately derives from tribes.</p>
 
 <p>The force of tribalism is the most powerful of all human group
-forces. This force still haunts mankind, and doesn&#8217;t seem to go away
+forces. This force still haunts mankind, and doesn&rsquo;t seem to go away
 very soon. With tribalism still dominating as one of the major forces
 in this world, it would be wise to analyze, the force that affects
 tribal dynamics. Group theory, that observes the dynamics of people in
@@ -50,7 +50,7 @@ and advantage of oneself.</p>
 <p>There are other laws also which I think control tribal dynamics.
 Tribes like to establish superiority over other tribes. Tribes like to
 take credit for ancient civilizations and for all the glory to mankind
-they&#8217;ve brought, but discredit other tribes and their achievements. A
+they&rsquo;ve brought, but discredit other tribes and their achievements. A
 tribe can be united by using various definitions like nation,
 religion, race, creed, etc. But mostly tribal feelings are glorified
 by achievements that a particular tribe has already achieved.</p>
@@ -74,10 +74,10 @@ chapter in history. This is the condition of our world.</p>
     <updated>2012-09-02T12:46:00+05:30</updated>
     <id>http://roupam.github.com/blog/2012/09/02/what-goes-in-here</id>
     <content type="html"><![CDATA[<p>This blog will contain my thoughts or whatever comes to my mind. They
-will not be written in an ordered manner but instead whenever they&#8217;ll
+will not be written in an ordered manner but instead whenever they&rsquo;ll
 arrive in my mind. There are various things that come to my mind, as a
 result of observation or analysis. Not recorded they are <strong>lost
-forever</strong>. But still this blog isn&#8217;t written to reach the conclusion
+forever</strong>. But still this blog isn&rsquo;t written to reach the conclusion
 of recording thoughts. Instead it has no conclusion at all.</p>
 ]]></content>
   </entry>
@@ -89,7 +89,7 @@ of recording thoughts. Instead it has no conclusion at all.</p>
     <id>http://roupam.github.com/blog/2012/09/02/not-my-first-blog-post</id>
     <content type="html"><![CDATA[<p>I am blogging via <strong>Octopress</strong> using <strong>Github Pages</strong>.  Writing my posts using
 <strong>Emacs</strong> (to be specific <strong>org-mode</strong> and not <strong>markdown</strong>), and writing
-math-equations using <strong>Mathjax</strong> $$\zeta(s) = \sum \frac{1}{n<sup>s}$$</sup> Isn&#8217;t this super fishy!</p>
+math-equations using <strong>Mathjax</strong> $\zeta(s) = \sum \frac{1}{n^s}$ Isn&rsquo;t this super fishy!</p>
 ]]></content>
   </entry>
   

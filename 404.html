@@ -33,9 +33,6 @@ Sep 02 2012 &hellip;">
 
   
 
-<script type="text/javascript"
-  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 </head>
 
 <body   class="no-sidebar"  >
@@ -80,7 +77,7 @@ Sep 02 2012 &hellip;">
   <article>
     
 <h1><a href="/blog/2012/09/02/tribalism/">Tribalism</a></h1>
-<time datetime="2012-09-02T12:54:00+05:30" pubdate><span class='month'>Sep</span> <span class='day'>02</span> <span class='year'>2012</span></time>
+<time datetime="2012-09-02T12:54:00+05:30" pubdate=""><span class="month">Sep</span> <span class="day">02</span> <span class="year">2012</span></time>
 
 
   </article>
@@ -88,7 +85,7 @@ Sep 02 2012 &hellip;">
   <article>
     
 <h1><a href="/blog/2012/09/02/what-goes-in-here/">What goes in here</a></h1>
-<time datetime="2012-09-02T12:46:00+05:30" pubdate><span class='month'>Sep</span> <span class='day'>02</span> <span class='year'>2012</span></time>
+<time datetime="2012-09-02T12:46:00+05:30" pubdate=""><span class="month">Sep</span> <span class="day">02</span> <span class="year">2012</span></time>
 
 
   </article>
@@ -96,13 +93,12 @@ Sep 02 2012 &hellip;">
   <article>
     
 <h1><a href="/blog/2012/09/02/not-my-first-blog-post/">Not my first blog post</a></h1>
-<time datetime="2012-09-02T02:17:00+05:30" pubdate><span class='month'>Sep</span> <span class='day'>02</span> <span class='year'>2012</span></time>
+<time datetime="2012-09-02T02:17:00+05:30" pubdate=""><span class="month">Sep</span> <span class="day">02</span> <span class="year">2012</span></time>
 
 
   </article>
   
 </div>
-
 
   
 </article>
@@ -138,6 +134,24 @@ Sep 02 2012 &hellip;">
 
 
 
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 
 </body>

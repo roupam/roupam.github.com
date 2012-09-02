@@ -34,9 +34,6 @@ math-equations &hellip;">
 
   
 
-<script type="text/javascript"
-  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 </head>
 
 <body   class="no-sidebar"  >
@@ -95,7 +92,7 @@ math-equations &hellip;">
 
 <div class="entry-content"><p>I am blogging via <strong>Octopress</strong> using <strong>Github Pages</strong>.  Writing my posts using
 <strong>Emacs</strong> (to be specific <strong>org-mode</strong> and not <strong>markdown</strong>), and writing
-math-equations using <strong>Mathjax</strong> $$\zeta(s) = \sum \frac{1}{n<sup>s}$$</sup> Isn&#8217;t this super fishy!</p>
+math-equations using <strong>Mathjax</strong> $\zeta(s) = \sum \frac{1}{n^s}$ Isn&rsquo;t this super fishy!</p>
 </div>
 
 
@@ -173,6 +170,24 @@ math-equations using <strong>Mathjax</strong> $$\zeta(s) = \sum \frac{1}{n<sup>s
 
 
 
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 
 </body>
