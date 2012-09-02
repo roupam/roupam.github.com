@@ -9,6 +9,6 @@ categories:
 
 I am blogging via **Octopress** using **Github Pages**.  Writing my posts using
 **Emacs** (to be specific **org-mode** and not **markdown**), and writing
-math-equations using **Mathjax** ($\zeta(s) = \sum \frac{1}{n^s}$). Isn't this super fishy!
+math-equations using **Mathjax** $$\zeta(s) = \sum \frac{1}{n^s}$$ Isn't this super fishy!
 
 #+END_HTML
