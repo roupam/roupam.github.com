@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[]]></title>
+  <title><![CDATA[RPG]]></title>
   <link href="http://roupam.github.com/atom.xml" rel="self"/>
   <link href="http://roupam.github.com/"/>
-  <updated>2012-09-24T20:22:08+05:30</updated>
+  <updated>2012-09-24T21:24:08+05:30</updated>
   <id>http://roupam.github.com/</id>
   <author>
     <name><![CDATA[Roupam Ghosh]]></name>
