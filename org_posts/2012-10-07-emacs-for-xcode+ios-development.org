@@ -2,7 +2,6 @@
 #+AUTHOR Roupam Ghosh
 #+OPTIONS: H:4
 #+OPTIONS: num:nil
-#+OPTIONS: toc:nil
 #+OPTIONS: author:t
 
 Setup Emacs for XCode+iOS development
@@ -40,9 +39,7 @@ abbreviation and automatically expand it into function templates. Now
 for iOS/Obj-C we have functions like
 
 #+begin_src objc
-- (void) webView:(UIWebView *)webView
-  shouldStartLoadWithRequest:(NSURLRequest *)request
-  navigationType:(UIWebViewNavigationType)navigationType
+- (void) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 #+end_src
 
 Memorizing such functions is a pain, and almost never really works
@@ -55,17 +52,12 @@ https://github.com/roupam/yasobjc
 Then run the _yasobjc.rb_ script as:
 
 #+begin_src bash
-$ find
-/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks
--name "*.h" | xargs ./yasobjc.rb -o
-
-$ ~/.emacs.d/elpa/yasnippet-0.6.1/snippets/text-mode/cc-mode/objc-mode/
+$ find /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks -name "*.h" | xargs ./yasobjc.rb -o ~/.emacs.d/elpa/yasnippet-0.6.1/snippets/text-mode/cc-mode/objc-mode/
 #+end_src
 
 A really long command, let me abbreviate that:
 #+begin_src bash
-$ find IPHONE_SDK_FRAMEWORKS_DIR -name "*.h" | xargs ./yasobjc.rb -o
-$ YASNIPPETS_SNIPPETS_DIR/text-mode/cc-mode/objc-mode/
+$ find IPHONE_SDK_FRAMEWORKS_DIR -name "*.h" | xargs ./yasobjc.rb -o YASNIPPETS_SNIPPETS_DIR/text-mode/cc-mode/objc-mode/
 #+end_src
 
 Basically this reads the iOS Framework header files, makes the

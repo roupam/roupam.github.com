@@ -132,6 +132,25 @@ get near the XCode functionalities. I tried implementing some of them
 and here&#8217;s the things which I have suceeded to implement so far:
 </p>
 
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Emacs automatic iOS Framework method implementations using YASnippet and auto-complete</a>
+<ul>
+<li><a href="#sec-1-1">YASnippet</a></li>
+<li><a href="#sec-1-2">Auto-complete</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">Pragma marks</a></li>
+<li><a href="#sec-3">Code browsing using etags</a></li>
+<li><a href="#sec-4">XCode documentation search and viewing inside Emacs</a></li>
+<li><a href="#sec-5">Debugging with NSLogs on Simulator and on Devices</a></li>
+<li><a href="#sec-6">Xcode project management from the command line</a></li>
+</ul>
+</div>
+</div>
+
 <div id="outline-container-1" class="outline-2">
 <h2 id="sec-1">Emacs automatic iOS Framework method implementations using YASnippet and auto-complete</h2>
 <div class="outline-text-2" id="text-1">
@@ -154,11 +173,7 @@ for iOS/Obj-C we have functions like
 
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">webView:</span><span class="p">(</span><span class="n">UIWebView</span> <span class="o">*</span><span class="p">)</span><span class="nv">webView</span>
-</span><span class="line">  <span class="nf">shouldStartLoadWithRequest:</span><span class="p">(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="p">)</span><span class="nv">request</span>
-</span><span class="line">  <span class="nf">navigationType:</span><span class="p">(</span><span class="n">UIWebViewNavigationType</span><span class="p">)</span><span class="nv">navigationType</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">webView:</span><span class="p">(</span><span class="n">UIWebView</span> <span class="o">*</span><span class="p">)</span><span class="nv">webView</span> <span class="nf">shouldStartLoadWithRequest:</span><span class="p">(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="p">)</span><span class="nv">request</span> <span class="nf">navigationType:</span><span class="p">(</span><span class="n">UIWebViewNavigationType</span><span class="p">)</span><span class="nv">navigationType</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
@@ -178,15 +193,7 @@ Then run the <span style="text-decoration:underline;">yasobjc.rb</span> script a
 
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nv">$ </span>find
-</span><span class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks
-</span><span class="line">-name <span class="s2">&quot;*.h&quot;</span> | xargs ./yasobjc.rb -o
-</span><span class="line">
-</span><span class="line"><span class="nv">$ </span>~/.emacs.d/elpa/yasnippet-0.6.1/snippets/text-mode/cc-mode/objc-mode/
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nv">$ </span>find /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks -name <span class="s2">&quot;*.h&quot;</span> | xargs ./yasobjc.rb -o ~/.emacs.d/elpa/yasnippet-0.6.1/snippets/text-mode/cc-mode/objc-mode/
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
@@ -194,9 +201,7 @@ Then run the <span style="text-decoration:underline;">yasobjc.rb</span> script a
 A really long command, let me abbreviate that:
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nv">$ </span>find IPHONE_SDK_FRAMEWORKS_DIR -name <span class="s2">&quot;*.h&quot;</span> | xargs ./yasobjc.rb -o
-</span><span class="line"><span class="nv">$ </span>YASNIPPETS_SNIPPETS_DIR/text-mode/cc-mode/objc-mode/
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nv">$ </span>find IPHONE_SDK_FRAMEWORKS_DIR -name <span class="s2">&quot;*.h&quot;</span> | xargs ./yasobjc.rb -o YASNIPPETS_SNIPPETS_DIR/text-mode/cc-mode/objc-mode/
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
@@ -216,12 +221,18 @@ parameters according to your emacs installation of YASnippets.
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="c1">;; yasnippet (add-to-list &#39;load-path</span>
-</span><span class="line"><span class="s">&quot;~/.emacs.d/elpa/yasnippet-0.6.1&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;yasnippet</span><span class="p">)</span> <span class="p">(</span><span class="k">setq</span>
-</span><span class="line"><span class="nv">yas/trigger-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;C-c &lt;kp-multiply&gt;&quot;</span><span class="p">))</span> <span class="p">(</span><span class="nv">yas/initialize</span><span class="p">)</span> <span class="c1">;; This is</span>
-</span><span class="line"><span class="nv">where</span> <span class="nv">your</span> <span class="nv">snippets</span> <span class="nv">will</span> <span class="nv">lie.</span>  <span class="p">(</span><span class="k">setq</span> <span class="nv">yas/root-directory</span>
-</span><span class="line"><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;~/.emacs.d/elpa/yasnippet-0.6.1/snippets&quot;</span><span class="p">))</span> <span class="p">(</span><span class="nb">mapc</span>
-</span><span class="line"><span class="ss">&#39;yas/load-directory</span> <span class="nv">yas/root-directory</span><span class="p">)</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="c1">;; yasnippet</span>
+</span><span class="line"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="s">&quot;~/.emacs.d/elpa/yasnippet-0.6.1&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;yasnippet</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="k">setq</span> <span class="nv">yas/trigger-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;C-c &lt;kp-multiply&gt;&quot;</span><span class="p">))</span>
+</span><span class="line"><span class="p">(</span><span class="nv">yas/initialize</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">;; This is where your snippets will lie.</span>
+</span><span class="line"><span class="p">(</span><span class="k">setq</span> <span class="nv">yas/root-directory</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;~/.emacs.d/elpa/yasnippet-0.6.1/snippets&quot;</span><span class="p">))</span>
+</span><span class="line"><span class="p">(</span><span class="nb">mapc</span> <span class="ss">&#39;yas/load-directory</span> <span class="nv">yas/root-directory</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
@@ -256,18 +267,20 @@ mentioned in the auto-complete config.
 <span class="line-number">10</span>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="c1">;; auto-complete (add-to-list &#39;load-path</span>
-</span><span class="line"><span class="s">&quot;~/.emacs.d/elpa/auto-complete-1.4.20110207&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nb">require</span>
-</span><span class="line"><span class="ss">&#39;auto-complete-config</span><span class="p">)</span> <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;ac-dictionary-directories</span>
-</span><span class="line"><span class="s">&quot;~/.emacs.d/elpa/auto-complete-1.4.20110207/dict&quot;</span><span class="p">)</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="c1">;; auto-complete</span>
+</span><span class="line"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="s">&quot;~/.emacs.d/elpa/auto-complete-1.4.20110207&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;auto-complete-config</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;ac-dictionary-directories</span> <span class="s">&quot;~/.emacs.d/elpa/auto-complete-1.4.20110207/dict&quot;</span><span class="p">)</span>
 </span><span class="line">
-</span><span class="line"><span class="p">(</span><span class="nv">setq-default</span> <span class="nv">ac-sources</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">ac-source-yasnippet</span> <span class="nv">ac-source-abbrev</span>
-</span><span class="line"><span class="nv">ac-source-dictionary</span> <span class="nv">ac-source-words-in-same-mode-buffers</span><span class="p">))</span> <span class="p">(</span><span class="nv">add-hook</span>
-</span><span class="line"><span class="ss">&#39;emacs-lisp-mode-hook</span> <span class="ss">&#39;ac-emacs-lisp-mode-setup</span><span class="p">)</span> <span class="p">(</span><span class="nv">add-hook</span>
-</span><span class="line"><span class="ss">&#39;c-mode-common-hook</span> <span class="ss">&#39;ac-cc-mode-setup</span><span class="p">)</span> <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;ruby-mode-hook</span>
-</span><span class="line"><span class="ss">&#39;ac-ruby-mode-setup</span><span class="p">)</span> <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;css-mode-hook</span> <span class="ss">&#39;ac-css-mode-setup</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nv">setq-default</span> <span class="nv">ac-sources</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">ac-source-yasnippet</span> <span class="nv">ac-source-abbrev</span> <span class="nv">ac-source-dictionary</span> <span class="nv">ac-source-words-in-same-mode-buffers</span><span class="p">))</span>
+</span><span class="line"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;emacs-lisp-mode-hook</span> <span class="ss">&#39;ac-emacs-lisp-mode-setup</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;c-mode-common-hook</span> <span class="ss">&#39;ac-cc-mode-setup</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;ruby-mode-hook</span> <span class="ss">&#39;ac-ruby-mode-setup</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;css-mode-hook</span> <span class="ss">&#39;ac-css-mode-setup</span><span class="p">)</span>
 </span><span class="line"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;auto-complete-mode-hook</span> <span class="ss">&#39;ac-common-setup</span><span class="p">)</span>
-</span><span class="line"><span class="p">(</span><span class="nv">global-auto-complete-mode</span> <span class="no">t</span><span class="p">)</span> <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;ac-modes</span> <span class="ss">&#39;objc-mode</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nv">global-auto-complete-mode</span> <span class="no">t</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;ac-modes</span> <span class="ss">&#39;objc-mode</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
@@ -318,15 +331,23 @@ Here&#8217;s my Emacs config for setting up pragma-marks:
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;anything</span><span class="p">)</span> <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;anything-config</span><span class="p">)</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;anything</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;anything-config</span><span class="p">)</span>
 </span><span class="line">
-</span><span class="line"><span class="p">(</span><span class="nb">defvar</span> <span class="nv">anything-c-source-objc-headline</span> <span class="o">&#39;</span><span class="p">((</span><span class="nv">name</span> <span class="o">.</span> <span class="s">&quot;Objective-C</span>
-</span><span class="line"><span class="s">  Headline&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nv">headline</span> <span class="s">&quot;^[-+@]\\|^#pragma mark&quot;</span><span class="p">)))</span>
+</span><span class="line"><span class="p">(</span><span class="nb">defvar</span> <span class="nv">anything-c-source-objc-headline</span>
+</span><span class="line">  <span class="o">&#39;</span><span class="p">((</span><span class="nv">name</span> <span class="o">.</span> <span class="s">&quot;Objective-C Headline&quot;</span><span class="p">)</span>
+</span><span class="line">    <span class="p">(</span><span class="nv">headline</span>  <span class="s">&quot;^[-+@]\\|^#pragma mark&quot;</span><span class="p">)))</span>
 </span><span class="line">
-</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">objc-headline</span> <span class="p">()</span> <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span> <span class="c1">;; Set to 500 so it is displayed</span>
-</span><span class="line">  <span class="nv">even</span> <span class="k">if</span> <span class="nv">all</span> <span class="nv">methods</span> <span class="nv">are</span> <span class="nb">not</span> <span class="nv">narrowed</span> <span class="nv">down.</span>  <span class="p">(</span><span class="k">let</span>
-</span><span class="line">  <span class="p">((</span><span class="nv">anything-candidate-number-limit</span> <span class="mi">500</span><span class="p">))</span> <span class="p">(</span><span class="nv">anything-other-buffer</span>
-</span><span class="line">  <span class="o">&#39;</span><span class="p">(</span><span class="nv">anything-c-source-objc-headline</span><span class="p">)</span> <span class="s">&quot;*ObjC Headline*&quot;</span><span class="p">)))</span>
+</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">objc-headline</span> <span class="p">()</span>
+</span><span class="line">  <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
+</span><span class="line">  <span class="c1">;; Set to 500 so it is displayed even if all methods are not narrowed down.</span>
+</span><span class="line">  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">anything-candidate-number-limit</span> <span class="mi">500</span><span class="p">))</span>
+</span><span class="line">    <span class="p">(</span><span class="nv">anything-other-buffer</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">anything-c-source-objc-headline</span><span class="p">)</span>
+</span><span class="line">                           <span class="s">&quot;*ObjC Headline*&quot;</span><span class="p">)))</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
@@ -419,8 +440,8 @@ get from here <a href="https://github.com/roupam/emacs-xcode-document-viewer">ht
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;xcode-document-viewer</span><span class="p">)</span> <span class="p">(</span><span class="k">setq</span> <span class="nv">xcdoc:document-path</span>
-</span><span class="line"><span class="s">&quot;~/Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiOS5_1.iOSLibrary.docset&quot;</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;xcode-document-viewer</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="k">setq</span> <span class="nv">xcdoc:document-path</span> <span class="s">&quot;/Users/rpg/Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiOS5_1.iOSLibrary.docset&quot;</span><span class="p">)</span>
 </span><span class="line"><span class="p">(</span><span class="k">setq</span> <span class="nv">xcdoc:open-w3m-other-buffer</span> <span class="no">t</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -436,14 +457,10 @@ the right docsetutil command
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">xcdoc:docsetutil-command</span> <span class="p">()</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">executable-find</span> <span class="s">&quot;docsetutil&quot;</span><span class="p">)</span>
-</span><span class="line">  <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nv">file-executable-p</span>
-</span><span class="line">  <span class="s">&quot;/Applications/Xcode.app/Contents/Developer/usr/bin/docsetutil&quot;</span><span class="p">)</span>
-</span><span class="line">  <span class="s">&quot;/Applications/Xcode.app/Contents/Developer/usr/bin/docsetutil&quot;</span><span class="p">)</span>
-</span><span class="line">  <span class="p">(</span><span class="nb">error</span> <span class="s">&quot;docsetutil command is not found. Perhaps you dont have Xcode</span>
-</span><span class="line"><span class="s">  man.&quot;</span><span class="p">)))</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">xcdoc:docsetutil-command</span> <span class="p">()</span>
+</span><span class="line">  <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">executable-find</span> <span class="s">&quot;docsetutil&quot;</span><span class="p">)</span>
+</span><span class="line">      <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nv">file-executable-p</span> <span class="s">&quot;/Applications/Xcode.app/Contents/Developer/usr/bin/docsetutil&quot;</span><span class="p">)</span> <span class="s">&quot;/Applications/Xcode.app/Contents/Developer/usr/bin/docsetutil&quot;</span><span class="p">)</span>
+</span><span class="line">      <span class="p">(</span><span class="nb">error</span> <span class="s">&quot;docsetutil command is not found. Perhaps you dont have Xcode man.&quot;</span><span class="p">)))</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
