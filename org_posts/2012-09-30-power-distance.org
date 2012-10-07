@@ -7,7 +7,7 @@ comments: true
 categories:
 ---
 
-_Geert Hofstede_. Have you heard his name before? Maybe not. Even I
+_Geert Hofstede_. Have you heard about this guy? Maybe not. Even I
 didn't till a few years back. But when I read what he had to say, it
 **ROCKED** my world.
 
