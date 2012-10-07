@@ -107,7 +107,7 @@ auto-complete
 
 {% img images/emacs-ios/yasnippet.png %}
 
-* Pragma marks
+* XCode pragma marks in Emacs
 
 Pragma marks are XCode's way of browsing through large Objective-C
 source code files, showing the functionality of a set of methods.
@@ -152,7 +152,7 @@ what I see in a separate buffer:
 Selecting a method and pressing enter takes you to that particular
 method.
 
-* Code browsing using etags
+* Source code browsing and viewing Framework deifnitions using etags
 
 ETAGS or Emacs Tags is a facility for recording names and their
 definitions and later looking up the definitions.  Here's how to
@@ -209,7 +209,7 @@ NSString leads to this.
 {% img images/emacs-ios/w3m.png %}
 
 
-* Debugging with NSLogs on Simulator and on Devices
+* Debugging on Simulator and on Devices
 
 Get fruitstrap from here https://github.com/roupam/fruitstrap
 
