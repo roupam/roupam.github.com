@@ -1,5 +1,5 @@
 
-<p>Setup Emacs for XCode/iOS development
+<p>Setup Emacs for XCode+iOS development
 </p>
 <p>
 The current document has been written after being tested on Emacs 24
@@ -20,7 +20,7 @@ Emacs as a development tool is excellent. The abstract and global
 approach of Emacs towards programming languages, has helped me to
 finally setup up Objective-C for iOS inside it, in such a way, that I
 am free to ditch XCode. Except perhaps some mundane tasks like file
-additions, etc. which XCode is so clumsy to provide to developers from
+additions, etc. which Apple is so clumsy to provide to developers from
 the command line.
 </p>
 <p>
@@ -79,10 +79,12 @@ Then run the <span style="text-decoration:underline;">yasobjc.rb</span> script a
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">find
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nv">$ </span>find
 </span><span class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks
 </span><span class="line">-name <span class="s2">&quot;*.h&quot;</span> | xargs ./yasobjc.rb -o
-</span><span class="line">~/.emacs.d/elpa/yasnippet-0.6.1/snippets/text-mode/cc-mode/objc-mode/
+</span><span class="line">
+</span><span class="line"><span class="nv">$ </span>~/.emacs.d/elpa/yasnippet-0.6.1/snippets/text-mode/cc-mode/objc-mode/
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
@@ -91,8 +93,8 @@ A really long command, let me abbreviate that:
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">find IPHONE_SDK_FRAMEWORKS_DIR -name <span class="s2">&quot;*.h&quot;</span> | xargs ./yasobjc.rb -o
-</span><span class="line">YASNIPPETS_SNIPPETS_DIR/text-mode/cc-mode/objc-mode/
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nv">$ </span>find IPHONE_SDK_FRAMEWORKS_DIR -name <span class="s2">&quot;*.h&quot;</span> | xargs ./yasobjc.rb -o
+</span><span class="line"><span class="nv">$ </span>YASNIPPETS_SNIPPETS_DIR/text-mode/cc-mode/objc-mode/
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
@@ -269,8 +271,8 @@ installation. Go to the root of your project directory and do.
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">find . -name <span class="s1">&#39;*.[hm]&#39;</span> | xargs etags find IPHONE_SDK_FRAMEWORKS_DIR
-</span><span class="line">-name <span class="s1">&#39;*.[h]&#39;</span> | xargs etags -a
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nv">$ </span>find . -name <span class="s1">&#39;*.[hm]&#39;</span> | xargs etags
+</span><span class="line"><span class="nv">$ </span>find IPHONE_SDK_FRAMEWORKS_DIR -name <span class="s1">&#39;*.[h]&#39;</span> | xargs etags -a
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
@@ -386,8 +388,8 @@ project root and do
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">xcodebuild -sdk iphoneos build fruitstrap -d -b
-</span><span class="line">QNote/build/Release-iphoneos/YOUR_APP.app
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nv">$ </span>xcodebuild -sdk iphoneos build
+</span><span class="line"><span class="nv">$ </span>fruitstrap -d -b QNote/build/Release-iphoneos/YOUR_APP.app
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
@@ -395,8 +397,8 @@ To run on simulator likewise do
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">xcodebuild -sdk iphonesimulator5.1 build ios-sim launch
-</span><span class="line">build/Release-iphonesimulator/YOUR_APP.app --sdk 5.1
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nv">$ </span>xcodebuild -sdk iphonesimulator5.1 build
+</span><span class="line"><span class="nv">$ </span>ios-sim launch build/Release-iphonesimulator/YOUR_APP.app --sdk 5.1
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 

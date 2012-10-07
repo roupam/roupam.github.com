@@ -2,35 +2,35 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://roupam.github.com/blog/2012/09/02/not-my-first-blog-post/</loc>
-        <lastmod>2012-10-07T23:33:17+05:30</lastmod>
+        <lastmod>2012-10-08T00:51:53+05:30</lastmod>
     </url>
     <url>
         <loc>http://roupam.github.com/blog/2012/09/02/what-goes-in-here/</loc>
-        <lastmod>2012-10-07T23:33:17+05:30</lastmod>
+        <lastmod>2012-10-08T00:48:28+05:30</lastmod>
     </url>
     <url>
         <loc>http://roupam.github.com/blog/2012/09/30/power-distance/</loc>
-        <lastmod>2012-10-08T00:44:50+05:30</lastmod>
+        <lastmod>2012-10-08T00:48:28+05:30</lastmod>
     </url>
     <url>
-        <loc>http://roupam.github.com/blog/2012/10/07/emacs-for-xcode-ios-development/</loc>
-        <lastmod>2012-10-07T22:52:20+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://roupam.github.com/404.html</loc>
-        <lastmod>2012-10-07T23:33:17+05:30</lastmod>
+        <loc>http://roupam.github.com/blog/2012/10/07/emacs-for-xcode%2Bios-development/</loc>
+        <lastmod>2012-10-08T00:55:09+05:30</lastmod>
     </url>
     <url>
         <loc>http://roupam.github.com/404.html</loc>
-        <lastmod>2012-10-07T23:33:17+05:30</lastmod>
+        <lastmod>2012-10-08T00:48:28+05:30</lastmod>
+    </url>
+    <url>
+        <loc>http://roupam.github.com/404.html</loc>
+        <lastmod>2012-10-08T00:48:28+05:30</lastmod>
     </url>
     <url>
         <loc>http://roupam.github.com/archives/</loc>
-        <lastmod>2012-10-08T00:44:50+05:30</lastmod>
+        <lastmod>2012-10-08T00:55:09+05:30</lastmod>
     </url>
     <url>
         <loc>http://roupam.github.com/blog/archives/</loc>
-        <lastmod>2012-10-08T00:44:50+05:30</lastmod>
+        <lastmod>2012-10-08T00:55:09+05:30</lastmod>
     </url>
     <url>
         <loc>http://roupam.github.com/feed/index.xml</loc>
@@ -38,6 +38,6 @@
     </url>
     <url>
         <loc>http://roupam.github.com/</loc>
-        <lastmod>2012-10-08T00:44:50+05:30</lastmod>
+        <lastmod>2012-10-08T00:55:09+05:30</lastmod>
     </url>
 </urlset>
