@@ -5,13 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>RPG</title>
+  <title></title>
   <meta name="author" content="Roupam Ghosh">
 
   
-  <meta name="description" content="Tribalism is something I would like to discuss about. Tribalism is the
-extension of our ancient tribal lives into our modern world. Infact
-most &hellip;">
+  <meta name="description" content="Setup Emacs for XCode/iOS development The current document has been written after being tested on Emacs 24
+with XCode 4.4 and iOS SDK 5.1 with Mac &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -26,7 +25,8 @@ most &hellip;">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="RPG" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -37,10 +37,15 @@ most &hellip;">
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">RPG</a></h1>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">RPG</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/"></a></h1>
   
-    <h2>Blog</h2>
-  
+  <div class="clear"></div>
 </hgroup>
 
 </header>
@@ -72,7 +77,518 @@ most &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/09/02/tribalism/">Tribalism</a></h1>
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2012/10/07/emacs-for-xcode-ios-development/">Emacs for Xcode Ios Development</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-07T00:00:00+05:30" pubdate data-updated="true">Oct 7<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+<p>Setup Emacs for XCode/iOS development
+</p>
+<p>
+The current document has been written after being tested on Emacs 24
+with XCode 4.4 and iOS SDK 5.1 with Mac OS X Mountain Lion. All github
+repositories have been forked for modifications and also so that this
+document remains valid even after they have changed, but the credits
+go to the respective authors.
+</p>
+<p>
+For building from command line you have to use xcdoebuild. You can get
+info about that and other tools from the Apple developer
+documentation. So it has not been discussed here. Also for any command
+line implementations run the Emacs shell by pressing Ctrl-x m or run a
+shell using M-x shell.
+</p>
+<p>
+Emacs as a development tool is excellent. The abstract and global
+approach of Emacs towards programming languages, has helped me to
+finally setup up Objective-C for iOS inside it, in such a way, that I
+am free to ditch XCode. Except perhaps some mundane tasks like file
+additions, etc. which XCode is so clumsy to provide to developers from
+the command line.
+</p>
+<p>
+Moving on, Emacs already provides an objc-mode. But its very limited
+in its functionality. You will need much more than just objc-mode to
+get near the XCode functionalities. I tried implementing some of them
+and here&#8217;s the things which I have suceeded to implement so far:
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Emacs automatic iOS Framework method implementations using YASnippet and auto-complete</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">YASnippet</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+<p>
+YASnippet is a template system for Emacs. It allows you to type an
+abbreviation and automatically expand it into function templates. Now
+for iOS/Obj-C we have functions like
+</p>
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">webView:</span><span class="p">(</span><span class="n">UIWebView</span> <span class="o">*</span><span class="p">)</span><span class="nv">webView</span>
+</span><span class="line">  <span class="nf">shouldStartLoadWithRequest:</span><span class="p">(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="p">)</span><span class="nv">request</span>
+</span><span class="line">  <span class="nf">navigationType:</span><span class="p">(</span><span class="n">UIWebViewNavigationType</span><span class="p">)</span><span class="nv">navigationType</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>
+Memorizing such functions is a pain, and almost never really works
+out. With YASnippet you can just start typing and a choice of possible
+function templates are presented to you.
+</p>
+<p>
+To do this you need to have yasobjc.rb.  Get this from
+<a href="https://github.com/roupam/yasobjc">https://github.com/roupam/yasobjc</a>
+</p>
+<p>
+Then run the <span style="text-decoration:underline;">yasobjc.rb</span> script as:
+</p>
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">find
+</span><span class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks
+</span><span class="line">-name <span class="s2">&quot;*.h&quot;</span> | xargs ./yasobjc.rb -o
+</span><span class="line">~/.emacs.d/elpa/yasnippet-0.6.1/snippets/text-mode/cc-mode/objc-mode/
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>
+A really long command, let me abbreviate that:
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">find IPHONE_SDK_FRAMEWORKS_DIR -name <span class="s2">&quot;*.h&quot;</span> | xargs ./yasobjc.rb -o
+</span><span class="line">YASNIPPETS_SNIPPETS_DIR/text-mode/cc-mode/objc-mode/
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+Basically this reads the iOS Framework header files, makes the
+function templates and puts them into your YASnippets directory.
+</p>
+<p>
+Here&#8217;s a sample yasnippet config for the Emacs init file Change the
+parameters according to your emacs installation of YASnippets.
+</p>
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="c1">;; yasnippet (add-to-list &#39;load-path</span>
+</span><span class="line"><span class="s">&quot;~/.emacs.d/elpa/yasnippet-0.6.1&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;yasnippet</span><span class="p">)</span> <span class="p">(</span><span class="k">setq</span>
+</span><span class="line"><span class="nv">yas/trigger-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;C-c &lt;kp-multiply&gt;&quot;</span><span class="p">))</span> <span class="p">(</span><span class="nv">yas/initialize</span><span class="p">)</span> <span class="c1">;; This is</span>
+</span><span class="line"><span class="nv">where</span> <span class="nv">your</span> <span class="nv">snippets</span> <span class="nv">will</span> <span class="nv">lie.</span>  <span class="p">(</span><span class="k">setq</span> <span class="nv">yas/root-directory</span>
+</span><span class="line"><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;~/.emacs.d/elpa/yasnippet-0.6.1/snippets&quot;</span><span class="p">))</span> <span class="p">(</span><span class="nb">mapc</span>
+</span><span class="line"><span class="ss">&#39;yas/load-directory</span> <span class="nv">yas/root-directory</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">Auto-complete</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+<p>
+Auto-complete is a very very useful functionality in Emacs and there&#8217;s
+a ton of discussion of it on the web, so I won&#8217;t discuss how to set it
+up right here. I&#8217;ll just post my config here. Note the yasnippet
+mentioned in the auto-complete config.
+</p>
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="c1">;; auto-complete (add-to-list &#39;load-path</span>
+</span><span class="line"><span class="s">&quot;~/.emacs.d/elpa/auto-complete-1.4.20110207&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nb">require</span>
+</span><span class="line"><span class="ss">&#39;auto-complete-config</span><span class="p">)</span> <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;ac-dictionary-directories</span>
+</span><span class="line"><span class="s">&quot;~/.emacs.d/elpa/auto-complete-1.4.20110207/dict&quot;</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nv">setq-default</span> <span class="nv">ac-sources</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">ac-source-yasnippet</span> <span class="nv">ac-source-abbrev</span>
+</span><span class="line"><span class="nv">ac-source-dictionary</span> <span class="nv">ac-source-words-in-same-mode-buffers</span><span class="p">))</span> <span class="p">(</span><span class="nv">add-hook</span>
+</span><span class="line"><span class="ss">&#39;emacs-lisp-mode-hook</span> <span class="ss">&#39;ac-emacs-lisp-mode-setup</span><span class="p">)</span> <span class="p">(</span><span class="nv">add-hook</span>
+</span><span class="line"><span class="ss">&#39;c-mode-common-hook</span> <span class="ss">&#39;ac-cc-mode-setup</span><span class="p">)</span> <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;ruby-mode-hook</span>
+</span><span class="line"><span class="ss">&#39;ac-ruby-mode-setup</span><span class="p">)</span> <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;css-mode-hook</span> <span class="ss">&#39;ac-css-mode-setup</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;auto-complete-mode-hook</span> <span class="ss">&#39;ac-common-setup</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nv">global-auto-complete-mode</span> <span class="no">t</span><span class="p">)</span> <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;ac-modes</span> <span class="ss">&#39;objc-mode</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>
+Here&#8217;s a sample screenshot showing webView methods using YASnippet and
+auto-complete
+</p>
+<p>
+<img src="images/emacs-ios/yasnippet.png" />
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">Pragma marks</h2>
+<div class="outline-text-2" id="text-2">
+
+
+<p>
+Pragma marks are XCode&#8217;s way of browsing through large Objective-C
+source code files, showing the functionality of a set of methods.
+</p>
+<p>
+For example check this screenshot:
+</p>
+<p>
+<img src="images/emacs-ios/pragma.png" />
+</p>
+<p>
+It shows a set of methods associated with TextView, another set with
+TableView and so on, and the methods themselves. This is very
+convenient, if you are trying to read and understand the code.
+</p>
+<p>
+Here&#8217;s my Emacs config for setting up pragma-marks:
+</p>
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;anything</span><span class="p">)</span> <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;anything-config</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nb">defvar</span> <span class="nv">anything-c-source-objc-headline</span> <span class="o">&#39;</span><span class="p">((</span><span class="nv">name</span> <span class="o">.</span> <span class="s">&quot;Objective-C</span>
+</span><span class="line"><span class="s">  Headline&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nv">headline</span> <span class="s">&quot;^[-+@]\\|^#pragma mark&quot;</span><span class="p">)))</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">objc-headline</span> <span class="p">()</span> <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span> <span class="c1">;; Set to 500 so it is displayed</span>
+</span><span class="line">  <span class="nv">even</span> <span class="k">if</span> <span class="nv">all</span> <span class="nv">methods</span> <span class="nv">are</span> <span class="nb">not</span> <span class="nv">narrowed</span> <span class="nv">down.</span>  <span class="p">(</span><span class="k">let</span>
+</span><span class="line">  <span class="p">((</span><span class="nv">anything-candidate-number-limit</span> <span class="mi">500</span><span class="p">))</span> <span class="p">(</span><span class="nv">anything-other-buffer</span>
+</span><span class="line">  <span class="o">&#39;</span><span class="p">(</span><span class="nv">anything-c-source-objc-headline</span><span class="p">)</span> <span class="s">&quot;*ObjC Headline*&quot;</span><span class="p">)))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>
+And I have bound the function to the key Ctrl-P
+</p>
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nv">global-set-key</span> <span class="s">&quot;\C-xp&quot;</span> <span class="ss">&#39;objc-headline</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>
+So whenever I am editing a source code file and I press Ctrl-P here&#8217;s
+what I see in a separate buffer:
+</p>
+<p>
+<img src="images/emacs-ios/pragma-emacs.png" />
+</p>
+<p>
+Selecting a method and pressing enter takes you to that particular
+method.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">Code browsing using etags</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<p>
+ETAGS or Emacs Tags is a facility for recording names and their
+definitions and later looking up the definitions.  Here&#8217;s how to
+record the names and definitions of any project that your are
+using. You should have a binary called etags in your Mac OS X
+installation. Go to the root of your project directory and do.
+</p>
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">find . -name <span class="s1">&#39;*.[hm]&#39;</span> | xargs etags find IPHONE_SDK_FRAMEWORKS_DIR
+</span><span class="line">-name <span class="s1">&#39;*.[h]&#39;</span> | xargs etags -a
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>
+This will generate a TAGS file in that directory. Visit that file
+using M-x visit-tags-table and it&#8217;s done.
+</p>
+<p>
+Now you can browse through class definitions and your source code
+functions. Just go to a class name in your source code like say
+NSUserDefaults, and press M-. and you will be presented with the
+complete class definition, methods, etc. that can be found in the
+Framework headers.
+</p>
+<p>
+<img src="images/emacs-ios/etags.png" />
+</p>
+<p>
+Press M-* to go back to where you were before.
+</p>
+<p>
+Check out more about Emacs TAGS here
+<a href="http://emacswiki.org/emacs/EmacsTags">http://emacswiki.org/emacs/EmacsTags</a>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">XCode documentation search and viewing inside Emacs</h2>
+<div class="outline-text-2" id="text-4">
+
+
+<p>
+If you have w3m installed for use from within your Emacs, then you can
+view and search XCode docsets. There&#8217;s nifty little tool that you can
+get from here <a href="https://github.com/roupam/emacs-xcode-document-viewer">https://github.com/roupam/emacs-xcode-document-viewer</a>
+</p>
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;xcode-document-viewer</span><span class="p">)</span> <span class="p">(</span><span class="k">setq</span> <span class="nv">xcdoc:document-path</span>
+</span><span class="line"><span class="s">&quot;~/Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiOS5_1.iOSLibrary.docset&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="k">setq</span> <span class="nv">xcdoc:open-w3m-other-buffer</span> <span class="no">t</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>
+You will also need to modify the xcode-document-viewer.el and point to
+the right docsetutil command
+</p>
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">xcdoc:docsetutil-command</span> <span class="p">()</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">executable-find</span> <span class="s">&quot;docsetutil&quot;</span><span class="p">)</span>
+</span><span class="line">  <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nv">file-executable-p</span>
+</span><span class="line">  <span class="s">&quot;/Applications/Xcode.app/Contents/Developer/usr/bin/docsetutil&quot;</span><span class="p">)</span>
+</span><span class="line">  <span class="s">&quot;/Applications/Xcode.app/Contents/Developer/usr/bin/docsetutil&quot;</span><span class="p">)</span>
+</span><span class="line">  <span class="p">(</span><span class="nb">error</span> <span class="s">&quot;docsetutil command is not found. Perhaps you dont have Xcode</span>
+</span><span class="line"><span class="s">  man.&quot;</span><span class="p">)))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>
+To search you can just do M-x xcdoc:search.  For example a search on
+NSString leads to this.
+</p>
+<p>
+<img src="images/emacs-ios/w3m.png" />
+</p>
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">Debugging with NSLogs on Simulator and on Devices</h2>
+<div class="outline-text-2" id="text-5">
+
+
+<p>
+Get fruitstrap from here <a href="https://github.com/roupam/fruitstrap">https://github.com/roupam/fruitstrap</a>
+</p>
+<p>
+Clone this git://github.com/roupam/fruitstrap.git Get into the cloned
+directory and do
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">make fruitstrap
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+Put the generated fruitstrap binary in any suitable path
+</p>
+
+<p>
+Get the Mac OS X 10.8 version with XCode 4.4 support from here
+<a href="https://github.com/phonegap/ios-sim">https://github.com/phonegap/ios-sim</a> After building just make the
+executable aviablable in your path
+</p>
+<p>
+Open an Emacs shell. Press Ctrl-x m To run on device go to your
+project root and do
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">xcodebuild -sdk iphoneos build fruitstrap -d -b
+</span><span class="line">QNote/build/Release-iphoneos/YOUR_APP.app
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+To run on simulator likewise do
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">xcodebuild -sdk iphonesimulator5.1 build ios-sim launch
+</span><span class="line">build/Release-iphonesimulator/YOUR_APP.app --sdk 5.1
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+</p></div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6">Xcode project management from the command line</h2>
+<div class="outline-text-2" id="text-6">
+
+
+<p>
+There&#8217;s a tool called xcs, but somewhat limited in its functionality,
+but still gets the job done. But still I think its an awesome piece of
+code, considering the fact that Apple is clumsy when it comes to
+developer support outside of Xcode.
+</p>
+<p>
+You can get xcs from here <a href="https://github.com/gonzoua/xcs">https://github.com/gonzoua/xcs</a>
+</p>
+
+<p>
+Hope you enjoyed this post, and believe me Emacs is
+more than you could expect, much much more.
+</p>
+<p>
+Please feel free to email me at roupam dot ghosh at gmail dot com.
+</p>
+<p>
+That&#8217;s all folks.
+</p></div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2012/09/30/power-distance/">Power Distance: Introduction</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-30T02:12:00+05:30" pubdate data-updated="true">Sep 30<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Geert Hofstede</em>. Have you heard his name before? Maybe not. Even I
+didn&rsquo;t till a few years back. But when I read what he had to say, it
+<strong>ROCKED</strong> my world.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2012/09/02/tribalism/">Tribalism</a></h1>
+      
     
     
       <p class="meta">
@@ -154,7 +670,9 @@ chapter in history. This is the condition of our world.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/09/02/what-goes-in-here/">What Goes in Here</a></h1>
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2012/09/02/what-goes-in-here/">What Goes in Here</a></h1>
+      
     
     
       <p class="meta">
@@ -195,7 +713,9 @@ of recording thoughts. Instead it has no conclusion at all.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/09/02/not-my-first-blog-post/">Not My First Blog Post</a></h1>
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2012/09/02/not-my-first-blog-post/">Not My First Blog Post</a></h1>
+      
     
     
       <p class="meta">
@@ -239,6 +759,14 @@ math-equations using <strong>Mathjax</strong> $\zeta(s) = \sum \frac{1}{n^s}$ Is
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/07/emacs-for-xcode-ios-development/">Emacs For Xcode Ios Development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/30/power-distance/">Power distance: Introduction</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/09/02/tribalism/">Tribalism</a>

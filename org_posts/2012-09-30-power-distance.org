@@ -1,0 +1,14 @@
+#+BEGIN_HTML
+---
+layout: post
+title: "Power distance: Introduction"
+date: 2012-09-30 02:12
+comments: true
+categories:
+---
+
+_Geert Hofstede_. Have you heard his name before? Maybe not. Even I
+didn't till a few years back. But when I read what he had to say, it
+**ROCKED** my world.
+
+#+END_HTML

@@ -1,0 +1,258 @@
+#+TITLE Setup Emacs for XCode/iOS development*
+#+AUTHOR Roupam Ghosh
+#+OPTIONS: H:4
+#+OPTIONS: num:nil
+#+OPTIONS: toc:nil
+#+OPTIONS: author:t
+
+Setup Emacs for XCode/iOS development
+
+The current document has been written after being tested on Emacs 24
+with XCode 4.4 and iOS SDK 5.1 with Mac OS X Mountain Lion. All github
+repositories have been forked for modifications and also so that this
+document remains valid even after they have changed, but the credits
+go to the respective authors.
+
+For building from command line you have to use xcdoebuild. You can get
+info about that and other tools from the Apple developer
+documentation. So it has not been discussed here. Also for any command
+line implementations run the Emacs shell by pressing Ctrl-x m or run a
+shell using M-x shell.
+
+Emacs as a development tool is excellent. The abstract and global
+approach of Emacs towards programming languages, has helped me to
+finally setup up Objective-C for iOS inside it, in such a way, that I
+am free to ditch XCode. Except perhaps some mundane tasks like file
+additions, etc. which XCode is so clumsy to provide to developers from
+the command line.
+
+Moving on, Emacs already provides an objc-mode. But its very limited
+in its functionality. You will need much more than just objc-mode to
+get near the XCode functionalities. I tried implementing some of them
+and here's the things which I have suceeded to implement so far:
+
+* Emacs automatic iOS Framework method implementations using YASnippet and auto-complete
+
+** YASnippet
+
+YASnippet is a template system for Emacs. It allows you to type an
+abbreviation and automatically expand it into function templates. Now
+for iOS/Obj-C we have functions like
+
+#+begin_src objc
+- (void) webView:(UIWebView *)webView
+  shouldStartLoadWithRequest:(NSURLRequest *)request
+  navigationType:(UIWebViewNavigationType)navigationType
+#+end_src
+
+Memorizing such functions is a pain, and almost never really works
+out. With YASnippet you can just start typing and a choice of possible
+function templates are presented to you.
+
+To do this you need to have yasobjc.rb.  Get this from
+https://github.com/roupam/yasobjc
+
+Then run the _yasobjc.rb_ script as:
+
+#+begin_src bash
+find
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks
+-name "*.h" | xargs ./yasobjc.rb -o
+~/.emacs.d/elpa/yasnippet-0.6.1/snippets/text-mode/cc-mode/objc-mode/
+#+end_src
+
+A really long command, let me abbreviate that:
+#+begin_src bash
+find IPHONE_SDK_FRAMEWORKS_DIR -name "*.h" | xargs ./yasobjc.rb -o
+YASNIPPETS_SNIPPETS_DIR/text-mode/cc-mode/objc-mode/
+#+end_src
+
+Basically this reads the iOS Framework header files, makes the
+function templates and puts them into your YASnippets directory.
+
+Here's a sample yasnippet config for the Emacs init file Change the
+parameters according to your emacs installation of YASnippets.
+
+#+begin_src cl
+;; yasnippet (add-to-list 'load-path
+"~/.emacs.d/elpa/yasnippet-0.6.1") (require 'yasnippet) (setq
+yas/trigger-key (kbd "C-c <kp-multiply>")) (yas/initialize) ;; This is
+where your snippets will lie.  (setq yas/root-directory
+'("~/.emacs.d/elpa/yasnippet-0.6.1/snippets")) (mapc
+'yas/load-directory yas/root-directory)
+#+end_src
+
+
+** Auto-complete
+
+Auto-complete is a very very useful functionality in Emacs and there's
+a ton of discussion of it on the web, so I won't discuss how to set it
+up right here. I'll just post my config here. Note the yasnippet
+mentioned in the auto-complete config.
+
+#+begin_src cl
+;; auto-complete (add-to-list 'load-path
+"~/.emacs.d/elpa/auto-complete-1.4.20110207") (require
+'auto-complete-config) (add-to-list 'ac-dictionary-directories
+"~/.emacs.d/elpa/auto-complete-1.4.20110207/dict")
+
+(setq-default ac-sources '(ac-source-yasnippet ac-source-abbrev
+ac-source-dictionary ac-source-words-in-same-mode-buffers)) (add-hook
+'emacs-lisp-mode-hook 'ac-emacs-lisp-mode-setup) (add-hook
+'c-mode-common-hook 'ac-cc-mode-setup) (add-hook 'ruby-mode-hook
+'ac-ruby-mode-setup) (add-hook 'css-mode-hook 'ac-css-mode-setup)
+(add-hook 'auto-complete-mode-hook 'ac-common-setup)
+(global-auto-complete-mode t) (add-to-list 'ac-modes 'objc-mode)
+#+end_src
+
+Here's a sample screenshot showing webView methods using YASnippet and
+auto-complete
+
+{% img images/emacs-ios/yasnippet.png %}
+
+* Pragma marks
+
+Pragma marks are XCode's way of browsing through large Objective-C
+source code files, showing the functionality of a set of methods.
+
+For example check this screenshot:
+
+{% img images/emacs-ios/pragma.png %}
+
+It shows a set of methods associated with TextView, another set with
+TableView and so on, and the methods themselves. This is very
+convenient, if you are trying to read and understand the code.
+
+Here's my Emacs config for setting up pragma-marks:
+
+#+begin_src cl
+(require 'anything) (require 'anything-config)
+
+(defvar anything-c-source-objc-headline '((name . "Objective-C
+  Headline") (headline "^[-+@]\\|^#pragma mark")))
+
+(defun objc-headline () (interactive) ;; Set to 500 so it is displayed
+  even if all methods are not narrowed down.  (let
+  ((anything-candidate-number-limit 500)) (anything-other-buffer
+  '(anything-c-source-objc-headline) "*ObjC Headline*")))
+#+end_src
+
+And I have bound the function to the key Ctrl-P
+
+#+begin_src cl
+(global-set-key "\C-xp" 'objc-headline)
+#+end_src
+
+So whenever I am editing a source code file and I press Ctrl-P here's
+what I see in a separate buffer:
+
+{% img images/emacs-ios/pragma-emacs.png %}
+
+Selecting a method and pressing enter takes you to that particular
+method.
+
+* Code browsing using etags
+
+ETAGS or Emacs Tags is a facility for recording names and their
+definitions and later looking up the definitions.  Here's how to
+record the names and definitions of any project that your are
+using. You should have a binary called etags in your Mac OS X
+installation. Go to the root of your project directory and do.
+
+#+begin_src bash
+find . -name '*.[hm]' | xargs etags find IPHONE_SDK_FRAMEWORKS_DIR
+-name '*.[h]' | xargs etags -a
+#+end_src
+
+This will generate a TAGS file in that directory. Visit that file
+using M-x visit-tags-table and it's done.
+
+Now you can browse through class definitions and your source code
+functions. Just go to a class name in your source code like say
+NSUserDefaults, and press M-. and you will be presented with the
+complete class definition, methods, etc. that can be found in the
+Framework headers.
+
+{% img images/emacs-ios/etags.png %}
+
+Press M-* to go back to where you were before.
+
+Check out more about Emacs TAGS here
+http://emacswiki.org/emacs/EmacsTags
+
+* XCode documentation search and viewing inside Emacs
+
+If you have w3m installed for use from within your Emacs, then you can
+view and search XCode docsets. There's nifty little tool that you can
+get from here https://github.com/roupam/emacs-xcode-document-viewer
+
+#+begin_src cl
+(require 'xcode-document-viewer) (setq xcdoc:document-path
+"~/Library/Developer/Shared/Documentation/DocSets/com.apple.adc.documentation.AppleiOS5_1.iOSLibrary.docset")
+(setq xcdoc:open-w3m-other-buffer t)
+#+end_src
+
+You will also need to modify the xcode-document-viewer.el and point to
+the right docsetutil command
+
+#+begin_src cl
+(defun xcdoc:docsetutil-command () (or (executable-find "docsetutil")
+  (and (file-executable-p
+  "/Applications/Xcode.app/Contents/Developer/usr/bin/docsetutil")
+  "/Applications/Xcode.app/Contents/Developer/usr/bin/docsetutil")
+  (error "docsetutil command is not found. Perhaps you dont have Xcode
+  man.")))
+#+end_src
+
+To search you can just do M-x xcdoc:search.  For example a search on
+NSString leads to this.
+
+{% img images/emacs-ios/w3m.png %}
+
+
+* Debugging with NSLogs on Simulator and on Devices
+
+Get fruitstrap from here https://github.com/roupam/fruitstrap
+
+Clone this git://github.com/roupam/fruitstrap.git Get into the cloned
+directory and do
+#+begin_src bash
+make fruitstrap
+#+end_src
+
+Put the generated fruitstrap binary in any suitable path
+
+
+Get the Mac OS X 10.8 version with XCode 4.4 support from here
+https://github.com/phonegap/ios-sim After building just make the
+executable aviablable in your path
+
+Open an Emacs shell. Press Ctrl-x m To run on device go to your
+project root and do
+#+begin_src bash
+xcodebuild -sdk iphoneos build fruitstrap -d -b
+QNote/build/Release-iphoneos/YOUR_APP.app
+#+end_src
+
+To run on simulator likewise do
+#+begin_src bash
+xcodebuild -sdk iphonesimulator5.1 build ios-sim launch
+build/Release-iphonesimulator/YOUR_APP.app --sdk 5.1
+#+end_src
+
+* Xcode project management from the command line
+
+There's a tool called xcs, but somewhat limited in its functionality,
+but still gets the job done. But still I think its an awesome piece of
+code, considering the fact that Apple is clumsy when it comes to
+developer support outside of Xcode.
+
+You can get xcs from here https://github.com/gonzoua/xcs
+
+
+Hope you enjoyed this post, and believe me Emacs is
+more than you could expect, much much more.
+
+Please feel free to email me at roupam dot ghosh at gmail dot com.
+
+That's all folks.
