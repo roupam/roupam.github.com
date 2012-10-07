@@ -152,7 +152,7 @@ what I see in a separate buffer:
 Selecting a method and pressing enter takes you to that particular
 method.
 
-* Source code browsing and viewing Framework deifnitions using etags
+* Source code browsing and viewing Framework definitions using etags
 
 ETAGS or Emacs Tags is a facility for recording names and their
 definitions and later looking up the definitions.  Here's how to
