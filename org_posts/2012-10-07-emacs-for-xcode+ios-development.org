@@ -30,7 +30,7 @@ in its functionality. You will need much more than just objc-mode to
 get near the XCode functionalities. I tried implementing some of them
 and here's the things which I have suceeded to implement so far:
 
-* Emacs automatic iOS Framework method implementations using YASnippet and auto-complete
+* Automatic iOS Framework method implementations using YASnippet and auto-complete in Emacs
 
 ** YASnippet
 
@@ -138,13 +138,13 @@ Here's my Emacs config for setting up pragma-marks:
                            "*ObjC Headline*")))
 #+end_src
 
-And I have bound the function to the key Ctrl-P
+And I have bound the function to the key Ctrl-x p
 
 #+begin_src cl
 (global-set-key "\C-xp" 'objc-headline)
 #+end_src
 
-So whenever I am editing a source code file and I press Ctrl-P here's
+So whenever I am editing a source code file and I press Ctrl-x p here's
 what I see in a separate buffer:
 
 {% img images/emacs-ios/pragma-emacs.png %}
