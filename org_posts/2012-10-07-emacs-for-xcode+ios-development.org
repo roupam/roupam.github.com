@@ -12,7 +12,7 @@ repositories have been forked for modifications and also so that this
 document remains valid even after they have changed, but the credits
 go to the respective authors.
 
-For building from command line you have to use xcdoebuild. You can get
+For building from command line you have to use xcodebuild. You can get
 info about that and other tools from the Apple developer
 documentation. So it has not been discussed here. Also for any command
 line implementations run the Emacs shell by pressing Ctrl-x m or run a
