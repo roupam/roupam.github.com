@@ -4,7 +4,7 @@
   <title><![CDATA[]]></title>
   <link href="http://roupam.github.com/atom.xml" rel="self"/>
   <link href="http://roupam.github.com/"/>
-  <updated>2012-10-08T01:45:03+05:30</updated>
+  <updated>2012-10-08T07:47:10+05:30</updated>
   <id>http://roupam.github.com/</id>
   <author>
     <name><![CDATA[Roupam Ghosh]]></name>
@@ -459,52 +459,17 @@ You can get xcs from here <a href="https://github.com/gonzoua/xcs">https://githu
 </p>
 
 <p>
-Hope you enjoyed this post, and believe me Emacs is
-more than you could expect, much much more.
+Emacs is much much more than this. But this is all that I could gather up right now.
+If you think there are other features in Emacs that are useful, and that I missed to explore, do let me know.
+I would be more than happy to post them here.
 </p>
 <p>
-Please feel free to email me at roupam dot ghosh at gmail dot com.
+Please feel free to email me your suggestions at roupam dot ghosh at gmail dot com.
 </p>
 <p>
 That&#8217;s all folks.
 </p></div>
 </div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Power distance: Introduction]]></title>
-    <link href="http://roupam.github.com/blog/2012/09/30/power-distance/"/>
-    <updated>2012-09-30T02:12:00+05:30</updated>
-    <id>http://roupam.github.com/blog/2012/09/30/power-distance</id>
-    <content type="html"><![CDATA[<p><em>Geert Hofstede</em>. Have you heard about this guy? Maybe not. Even I
-didn&rsquo;t till a few years back. But when I read what he had to say, it
-<strong>ROCKED</strong> my world.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[What goes in here]]></title>
-    <link href="http://roupam.github.com/blog/2012/09/02/what-goes-in-here/"/>
-    <updated>2012-09-02T12:46:00+05:30</updated>
-    <id>http://roupam.github.com/blog/2012/09/02/what-goes-in-here</id>
-    <content type="html"><![CDATA[<p>This blog will contain my thoughts or whatever comes to my mind. They
-will not be written in an ordered manner but instead whenever they&rsquo;ll
-arrive in my mind. There are various things that come to my mind, as a
-result of observation or analysis. Not recorded they are <strong>lost
-forever</strong>. But still this blog isn&rsquo;t written to reach the conclusion
-of recording thoughts. Instead it has no conclusion at all.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Not my first blog post]]></title>
-    <link href="http://roupam.github.com/blog/2012/09/02/not-my-first-blog-post/"/>
-    <updated>2012-09-02T02:17:00+05:30</updated>
-    <id>http://roupam.github.com/blog/2012/09/02/not-my-first-blog-post</id>
-    <content type="html"><![CDATA[<p>I am blogging via <strong>Octopress</strong> using <strong>Github Pages</strong>.  Writing my posts using
-<strong>Emacs</strong> (to be specific <strong>org-mode</strong> and not <strong>markdown</strong>), and writing
-math-equations using <strong>Mathjax</strong> Isn&rsquo;t this super fishy!</p>
 ]]></content>
   </entry>
   
