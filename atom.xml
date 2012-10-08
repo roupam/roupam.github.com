@@ -4,7 +4,7 @@
   <title><![CDATA[]]></title>
   <link href="http://roupam.github.com/atom.xml" rel="self"/>
   <link href="http://roupam.github.com/"/>
-  <updated>2012-10-08T07:47:10+05:30</updated>
+  <updated>2012-10-08T07:52:41+05:30</updated>
   <id>http://roupam.github.com/</id>
   <author>
     <name><![CDATA[Roupam Ghosh]]></name>
@@ -460,11 +460,11 @@ You can get xcs from here <a href="https://github.com/gonzoua/xcs">https://githu
 
 <p>
 Emacs is much much more than this. But this is all that I could gather up right now.
-If you think there are other features in Emacs that are useful, and that I missed to explore, do let me know.
-I would be more than happy to post them here.
+If you think there are other features in Emacs that are useful for XCode/iOS development, and that I missed to explore, do let me know.
+I would be glad to post them here.
 </p>
 <p>
-Please feel free to email me your suggestions at roupam dot ghosh at gmail dot com.
+Email me your suggestions at roupam dot ghosh at gmail dot com.
 </p>
 <p>
 That&#8217;s all folks.
