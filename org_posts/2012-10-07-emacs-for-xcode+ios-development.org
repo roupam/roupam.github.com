@@ -208,7 +208,6 @@ NSString leads to this.
 
 {% img images/emacs-ios/w3m.png %}
 
-
 * Debugging on Simulator and on Devices
 
 Get fruitstrap from here https://github.com/roupam/fruitstrap
@@ -247,6 +246,25 @@ code, considering the fact that Apple is clumsy when it comes to
 developer support outside of Xcode.
 
 You can get xcs from here https://github.com/gonzoua/xcs
+
+* Switching between header (.h) and source (.m) files
+
+Add this to you emacs init file if you would like to jump quickly
+between .h and .m files. Use Ctrl-C t
+
+#+begin_src cl
+(defun objc-jump-between-header-source ()
+  (interactive)
+  (if (objc-in-header-file)
+      (objc-jump-to-extension "m")
+    (objc-jump-to-extension "h")))
+
+(defun objc-mode-customizations ()
+  (define-key objc-mode-map (kbd "C-c t") 'objc-jump-between-header-source))
+
+(add-hook 'objc-mode-hook 'objc-mode-customizations)
+#+end_src
+
 
 
 Hope you enjoyed this post, and believe me Emacs is

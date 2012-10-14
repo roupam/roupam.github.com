@@ -159,6 +159,7 @@ and here&#8217;s the things which I have suceeded to implement so far:
 <li><a href="#sec-4">XCode documentation search and viewing inside Emacs</a></li>
 <li><a href="#sec-5">Debugging on Simulator and on Devices</a></li>
 <li><a href="#sec-6">Xcode project management from the command line</a></li>
+<li><a href="#sec-7">Switching between header (.h) and source (.m) files</a></li>
 </ul>
 </div>
 </div>
@@ -483,7 +484,6 @@ NSString leads to this.
 <p>
 <img src="images/emacs-ios/w3m.png" />
 </p>
-
 </div>
 
 </div>
@@ -551,14 +551,53 @@ developer support outside of Xcode.
 <p>
 You can get xcs from here <a href="https://github.com/gonzoua/xcs">https://github.com/gonzoua/xcs</a>
 </p>
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7">Switching between header (.h) and source (.m) files</h2>
+<div class="outline-text-2" id="text-7">
+
 
 <p>
-Emacs is much much more than this. But this is all that I could gather up right now.
-If you think there are other features in Emacs that are useful for XCode/iOS development, and that I missed to explore, do let me know.
-I would be glad to post them here.
+Add this to you emacs init file if you would like to jump quickly
+between .h and .m files. Use Ctrl-C t
+</p>
+
+
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">objc-jump-between-header-source</span> <span class="p">()</span>
+</span><span class="line">  <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
+</span><span class="line">  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nv">objc-in-header-file</span><span class="p">)</span>
+</span><span class="line">      <span class="p">(</span><span class="nv">objc-jump-to-extension</span> <span class="s">&quot;m&quot;</span><span class="p">)</span>
+</span><span class="line">    <span class="p">(</span><span class="nv">objc-jump-to-extension</span> <span class="s">&quot;h&quot;</span><span class="p">)))</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">objc-mode-customizations</span> <span class="p">()</span>
+</span><span class="line">  <span class="p">(</span><span class="nv">define-key</span> <span class="nv">objc-mode-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;C-c t&quot;</span><span class="p">)</span> <span class="ss">&#39;objc-jump-between-header-source</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;objc-mode-hook</span> <span class="ss">&#39;objc-mode-customizations</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+
+
+<p>
+Hope you enjoyed this post, and believe me Emacs is
+more than you could expect, much much more.
 </p>
 <p>
-Email me your suggestions at roupam dot ghosh at gmail dot com.
+Please feel free to email me at roupam dot ghosh at gmail dot com.
 </p>
 <p>
 That&#8217;s all folks.
