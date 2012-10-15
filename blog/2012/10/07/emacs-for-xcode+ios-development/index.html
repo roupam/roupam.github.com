@@ -463,7 +463,37 @@ between .h and .m files. Use Ctrl-C t
 <span class="line-number">8</span>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">objc-jump-between-header-source</span> <span class="p">()</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="c1">;; --- Obj-C switch between header and source ---</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">objc-in-header-file</span> <span class="p">()</span>
+</span><span class="line">  <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">filename</span> <span class="p">(</span><span class="nv">buffer-file-name</span><span class="p">))</span>
+</span><span class="line">         <span class="p">(</span><span class="nv">extension</span> <span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">last</span> <span class="p">(</span><span class="nv">split-string</span> <span class="nv">filename</span> <span class="s">&quot;\\.&quot;</span><span class="p">)))))</span>
+</span><span class="line">    <span class="p">(</span><span class="nb">string=</span> <span class="s">&quot;h&quot;</span> <span class="nv">extension</span><span class="p">)))</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">objc-jump-to-extension</span> <span class="p">(</span><span class="nv">extension</span><span class="p">)</span>
+</span><span class="line">  <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">filename</span> <span class="p">(</span><span class="nv">buffer-file-name</span><span class="p">))</span>
+</span><span class="line">         <span class="p">(</span><span class="nv">file-components</span> <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="nb">butlast</span> <span class="p">(</span><span class="nv">split-string</span> <span class="nv">filename</span>
+</span><span class="line">                                                         <span class="s">&quot;\\.&quot;</span><span class="p">))</span>
+</span><span class="line">                                  <span class="p">(</span><span class="nb">list</span> <span class="nv">extension</span><span class="p">))))</span>
+</span><span class="line">    <span class="p">(</span><span class="nv">find-file</span> <span class="p">(</span><span class="nv">mapconcat</span> <span class="ss">&#39;identity</span> <span class="nv">file-components</span> <span class="s">&quot;.&quot;</span><span class="p">))))</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">;;; Assumes that Header and Source file are in same directory</span>
+</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">objc-jump-between-header-source</span> <span class="p">()</span>
 </span><span class="line">  <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
 </span><span class="line">  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nv">objc-in-header-file</span><span class="p">)</span>
 </span><span class="line">      <span class="p">(</span><span class="nv">objc-jump-to-extension</span> <span class="s">&quot;m&quot;</span><span class="p">)</span>
@@ -476,8 +506,9 @@ between .h and .m files. Use Ctrl-C t
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
-
-
+<p>
+Thanks to <a href="https://github.com/kirankulkarni">Kiran Kulkarni</a> for this switching code.
+</p>
 <p>
 Hope you enjoyed this post, and believe me Emacs is
 more than you could expect, much much more.

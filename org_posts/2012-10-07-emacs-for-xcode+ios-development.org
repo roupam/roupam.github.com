@@ -253,6 +253,21 @@ Add this to you emacs init file if you would like to jump quickly
 between .h and .m files. Use Ctrl-C t
 
 #+begin_src cl
+;; --- Obj-C switch between header and source ---
+
+(defun objc-in-header-file ()
+  (let* ((filename (buffer-file-name))
+         (extension (car (last (split-string filename "\\.")))))
+    (string= "h" extension)))
+
+(defun objc-jump-to-extension (extension)
+  (let* ((filename (buffer-file-name))
+         (file-components (append (butlast (split-string filename
+                                                         "\\."))
+                                  (list extension))))
+    (find-file (mapconcat 'identity file-components "."))))
+
+;;; Assumes that Header and Source file are in same directory
 (defun objc-jump-between-header-source ()
   (interactive)
   (if (objc-in-header-file)
@@ -265,7 +280,7 @@ between .h and .m files. Use Ctrl-C t
 (add-hook 'objc-mode-hook 'objc-mode-customizations)
 #+end_src
 
-
+Thanks to [[https://github.com/kirankulkarni][Kiran Kulkarni]] for this switching code.
 
 Hope you enjoyed this post, and believe me Emacs is
 more than you could expect, much much more.
